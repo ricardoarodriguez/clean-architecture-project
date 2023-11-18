@@ -21,20 +21,20 @@ public class NoteController {
     private final NoteUseCase noteUseCase;
 
     @PostMapping(path = "/create")
-    public NoteResponse create(@RequestBody NoteRequest noteRequest) {
+    public ResponseEntity<NoteResponse> create(@RequestBody NoteRequest noteRequest) {
         Note noteToBeCreated = NoteMapper.toModel(noteRequest);
         Note noteCreated = noteUseCase.create(noteToBeCreated);
-        return NoteMapper.toResponse(noteCreated);
+        return ResponseEntity.status(HttpStatus.CREATED).body(NoteMapper.toResponse(noteCreated));
     }
 
     @GetMapping(path = "/getAll")
-    public List<NoteResponse> getAll() {
+    public ResponseEntity<List<NoteResponse>> getAll() {
         List<NoteResponse> noteResponseList = new ArrayList<>();
         List<Note> noteList = noteUseCase.getAll();
         for (Note note: noteList) {
             noteResponseList.add(NoteMapper.toResponse(note));
         }
-        return noteResponseList;
+        return ResponseEntity.ok(noteResponseList);
     }
 
     @GetMapping(path = "/get")
