@@ -7,7 +7,10 @@ import co.com.bancolombia.model.note.Note;
 public class NoteMapper {
 
     public static Note toModel(NoteRequest noteRequest) {
-        return Note.builder().message(noteRequest.getMessage()).status(noteRequest.getStatus()).build();
+        return Note.builder()
+                .message(noteRequest.getMessage())
+                .status(noteRequest.getStatus())
+                .build();
     }
 
     public static NoteResponse toResponse(Note note) {
@@ -19,4 +22,5 @@ public class NoteMapper {
                 .updateDate(note.getUpdateDate())
                 .build();
     }
+
 }

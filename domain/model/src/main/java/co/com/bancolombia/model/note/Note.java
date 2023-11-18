@@ -3,21 +3,23 @@ package co.com.bancolombia.model.note;
 import co.com.bancolombia.model.shared.exception.AppException;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 public class Note {
 
     private Long id;
     private String message;
-    private Boolean status;
+    private String status;
     private Date updateDate;
     private Date creationDate;
 
     @Builder(toBuilder = true)
-    public Note(String message, Boolean status) {
+    public Note(String message, String status) {
 
         if (message != null && !message.isEmpty() && message.length() < 255) {
             this.message = message.trim();

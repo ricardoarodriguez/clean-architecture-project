@@ -10,7 +10,7 @@ import java.util.Date;
 public class NoteResponse {
     private String message;
     private Long id;
-    private Boolean status;
+    private String status;
     private Date updateDate;
     private Date creationDate;
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface NoteRepository {
     Note create(Note parNote);
-    Note update(Long id, Note parNote);
+    void update(Long id, Note parNote);
     Note get(Long id);
     List<Note> getAll();
 }

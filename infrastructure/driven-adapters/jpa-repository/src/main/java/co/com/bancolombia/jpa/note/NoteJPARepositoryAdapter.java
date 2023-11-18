@@ -28,10 +28,9 @@ public class NoteJPARepositoryAdapter extends AdapterOperations<Note, NoteDAO, L
     }
 
     @Override
-    public Note update(Long id, Note parNote) {
-//        NoteDAO noteDAO = toData(parNote);
-//        return toEntity(repository.updateById(id, noteDAO));
-        return save(parNote);
+    public void update(Long id, Note parNote) {
+        NoteDAO noteDAO = toData(parNote);
+        repository.updateById(id, noteDAO.getMessage(), noteDAO.getStatus());
     }
 
     @Override
